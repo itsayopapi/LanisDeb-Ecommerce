@@ -1,0 +1,95 @@
+/* --- COLOR PALETTE --- */
+:root {
+    --color-primary: #000000;         /* Deep Black for sophistication */
+    --color-secondary: #ffc107;       /* Vibrant Gold/Marigold Yellow for accent */
+    --color-text-light: #ffffff;      /* Crisp White */
+    --color-background-dark: #1a1a1a; /* Dark background for depth */
+}
+
+/* --- GLOBAL STYLES (for elegance) --- */
+body {
+    font-family: 'Georgia', serif; /* Elegant base font */
+    color: var(--color-text-light);
+    margin: 0;
+    background-color: var(--color-background-dark);
+}
+
+/* --- HERO SECTION STYLING --- */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    overflow: hidden;
+}
+
+.hero-background-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('[PLACEHOLDER_URL_FOR_STUNNING_VISUAL]') center/cover no-repeat;
+    /* Apply a dark overlay for text readability and glamour */
+    filter: brightness(60%); 
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is on top of the visual */
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-headline {
+    font-family: 'Arial Black', sans-serif; /* Bold, modern font for impact */
+    font-size: 3.5rem; /* Large and dominant */
+    letter-spacing: 5px; /* Added spacing for a high-end feel */
+    text-transform: uppercase;
+    color: var(--color-secondary); /* Use gold accent color */
+    margin-bottom: 0.5rem;
+}
+
+.hero-subheadline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--color-text-light);
+}
+
+/* --- CALL TO ACTION (CTA) STYLING --- */
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--color-secondary);
+    color: var(--color-primary); /* Dark text on gold button */
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 3px solid var(--color-secondary); 
+    transition: background-color 0.3s, border-color 0.3s;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+/* --- TRUST BAR STYLING --- */
+.trust-bar {
+    background-color: var(--color-primary);
+    color: #aaaaaa;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #333333;
+}

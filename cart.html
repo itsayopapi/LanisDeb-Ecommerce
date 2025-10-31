@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | LANISDEB - Premium African & Caribbean Luxury</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-purple: #2D1B69;
+            --royal-purple: #4A2FB5;
+            --accent-purple: #7B68EE;
+            --rich-gold: #B8860B;
+            --warm-gold: #D4AF37;
+            --light-gold: #F0D87A;
+            --off-white: #F8F5F2;
+            --charcoal: #1A1A1A;
+            --light-charcoal: #2A2A2A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Luxury Header */
+        .luxury-header {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--royal-purple) 100%);
+            color: white;
+            padding: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .luxury-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--warm-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--deep-purple);
+        }
+        
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--light-gold);
+            letter-spacing: 1px;
+        }
+        
+        .logo-tagline {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 3px;
+            letter-spacing: 2px;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .header-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .header-link:hover {
+            color: var(--light-gold);
+        }
+        
+        .luxury-nav {
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--warm-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-gold);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-icon {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .nav-icon:hover {
+            color: var(--light-gold);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--warm-gold);
+            color: var(--deep-purple);
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .search-bar {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 8px 15px;
+            align-items: center;
+        }
+        
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            width: 200px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .search-bar button {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .breadcrumb-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb-links a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .breadcrumb-links a:hover {
+            color: var(--royal-purple);
+        }
+        
+        .breadcrumb-separator {
+            color: #ccc;
+        }
+        
+        /* Cart Section */
+        .cart-section {
+            padding: 60px 0;
+        }
+        
+        .cart-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .cart-title {
+            font-size: 2.2rem;
+            color: var(--deep-purple);
+        }
+        
+        .cart-items {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 20px;
+            padding: 25px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .item-details {
+            padding-right: 20px;
+        }
+        
+        .item-category {
+            font-size: 0.8rem;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .item-name {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+        
+        .item-price {
+            font-size: 1.1rem;
+            color: var(--deep-purple);
+            font-weight: 600;
+        }
+        
+        .item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--off-white);
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 35px;
+            border: none;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .remove-btn {
+            background: transparent;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-btn:hover {
+            color: #c0392b;
+        }
+        
+        .item-total {
+            font-size: 1.2rem;
+            color: var(--deep-purple);
+            font-weight: 600;
+        }
+        
+        /* Cart Summary */
+        .cart-summary {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .summary-title {
+            font-size: 1.5rem;
+            color: var(--deep-purple);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .summary-label {
+            color: var(--light-charcoal);
+        }
+        
+        .summary-value {
+            font-weight: 500;
+        }
+        
+        .summary-total {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--deep-purple);
+            margin: 20px 0;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .promo-code {
+            margin: 25px 0;
+        }
+        
+        .promo-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .promo-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+        }
+        
+        .apply-btn {
+            background: var(--deep-purple);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .apply-btn:hover {
+            background: var(--royal-purple);
+        }
+        
+        .checkout-btn {
+            background: var(--warm-gold);
+            color: var(--deep-purple);
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .checkout-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .continue-shopping {
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            margin-top: 15px;
+            color: var(--royal-purple);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .continue-shopping:hover {
+            color: var(--deep-purple);
+        }
+        
+        /* Empty Cart */
+        .empty-cart {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .empty-cart-icon {
+            font-size: 4rem;
+            color: var(--light-gold);
+            margin-bottom: 20px;
+        }
+        
+        .empty-cart-title {
+            font-size: 2rem;
+            color: var(--deep-purple);
+            margin-bottom: 15px;
+        }
+        
+        .empty-cart-text {
+            color: var(--light-charcoal);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .shop-now-btn {
+            background: var(--deep-purple);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .shop-now-btn:hover {
+            background: var(--royal-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 47, 181, 0.3);
+        }
+        
+        /* Footer */
+        .luxury-footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            color: var(--light-gold);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--light-gold);
+            margin-bottom: 15px;
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light-gold);
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .contact-icon {
+            color: var(--light-gold);
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 2px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--light-gold);
+            color: var(--deep-purple);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+            
+            .footer-column:last-child {
+                grid-column: 1 / -1;
+                margin-top: 30px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .luxury-nav {
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--charcoal);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 15px;
+            }
+            
+            .item-actions {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .cart-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Luxury Header -->
+    <header class="luxury-header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div>
+                        <div class="logo-text">LANISDEB</div>
+                        <div class="logo-tagline">AFRICAN & CARIBBEAN LUXURY</div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <a href="#" class="header-link">
+                        <i class="fas fa-store"></i>
+                        <span>Visit Our Store</span>
+                    </a>
+                    <a href="#" class="header-link">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (917) 419-4149</span>
+                    </a>
+                    <a href="#" class="header-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Lanisdeb@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Luxury Navigation -->
+    <nav class="luxury-nav">
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="fabrics.html">Fabrics</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+                <li><a href="jewelry.html">Jewelry</a></li>
+                <li><a href="foodstuff.html">Foodstuff</a></li>
+                <li><a href="custom.html">Custom Orders</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search luxury items...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="nav-icon">
+                    <i class="far fa-user"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">2</span>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-links">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="shop.html">Shop</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>Shopping Cart</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-header">
+                <h1 class="cart-title">Your Shopping Cart</h1>
+                <span class="cart-count-text">2 items</span>
+            </div>
+            
+            <div class="cart-container">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                    <!-- Cart Item 1 -->
+                    <div class="cart-item">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Royal Gold Aso Oke Set">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-category">Aso Oke</div>
+                            <h3 class="item-name">Royal Gold Aso Oke Set</h3>
+                            <div class="item-price">$285.00</div>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn decrease">-</button>
+                                <input type="number" class="quantity-input" value="1" min="1">
+                                <button class="quantity-btn increase">+</button>
+                            </div>
+                            <button class="remove-btn">
+                                <i class="fas fa-trash"></i>
+                                Remove
+                            </button>
+                            <div class="item-total">$285.00</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Item 2 -->
+                    <div class="cart-item">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021de399f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Beaded Necklace Set">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-category">Jewelry</div>
+                            <h3 class="item-name">Beaded Necklace Set</h3>
+                            <div class="item-price">$95.00</div>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn decrease">-</button>
+                                <input type="number" class="quantity-input" value="1" min="1">
+                                <button class="quantity-btn increase">+</button>
+                            </div>
+                            <button class="remove-btn">
+                                <i class="fas fa-trash"></i>
+                                Remove
+                            </button>
+                            <div class="item-total">$95.00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <h2 class="summary-title">Order Summary</h2>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Subtotal</span>
+                        <span class="summary-value">$380.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Shipping</span>
+                        <span class="summary-value">$9.99</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Tax</span>
+                        <span class="summary-value">$30.40</span>
+                    </div>
+                    
+                    <div class="promo-code">
+                        <label class="promo-label">Promo Code</label>
+                        <input type="text" class="promo-input" placeholder="Enter code">
+                        <button class="apply-btn">Apply Code</button>
+                    </div>
+                    
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span>$420.39</span>
+                    </div>
+                    
+                    <button class="checkout-btn">
+                        <i class="fas fa-lock"></i>
+                        Proceed to Checkout
+                    </button>
+                    
+                    <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="luxury-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">LANISDEB</div>
+                    <p class="footer-description">The Taste of Home, Near and Far! Your premier destination for authentic African and Caribbean luxury products, bringing you the finest craftsmanship, authentic foodstuff, and cultural elegance.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Collections</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Aso Ebi Fabrics</a></li>
+                        <li><a href="#">Ready to Wear</a></li>
+                        <li><a href="#">Custom Wearables</a></li>
+                        <li><a href="#">Aso Oke & Gele</a></li>
+                        <li><a href="#">Jewelry & Beads</a></li>
+                        <li><a href="#">Nigerian Foodstuff</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Care</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <span>891 Clarkson Avenue, Brooklyn NY 11225</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <span>+1 (917) 419-4149<br>+1 (347) 365-7028</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <span>Lanisdeb@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock contact-icon"></i>
+                            <span>Mon-Sat: 10AM - 8PM<br>Sunday: 12PM - 6PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LANISDEB AFRICAN & CARIBBEAN MARKET. All Rights Reserved. | The Taste of Home, Near and Far!</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Quantity controls
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value);
+                
+                if (this.classList.contains('increase')) {
+                    if (value < 10) {
+                        input.value = value + 1;
+                    }
+                } else if (this.classList.contains('decrease')) {
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                }
+                
+                updateCartTotals();
+            });
+        });
+        
+        // Quantity input change
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', function() {
+                let value = parseInt(this.value);
+                if (value < 1) this.value = 1;
+                if (value > 10) this.value = 10;
+                updateCartTotals();
+            });
+        });
+        
+        // Remove item
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartItem = this.closest('.cart-item');
+                cartItem.style.opacity = '0';
+                setTimeout(() => {
+                    cartItem.remove();
+                    updateCartTotals();
+                    updateCartCount();
+                    
+                    // Check if cart is empty
+                    if (document.querySelectorAll('.cart-item').length === 0) {
+                        showEmptyCart();
+                    }
+                }, 300);
+            });
+        });
+        
+        // Update cart totals
+        function updateCartTotals() {
+            let subtotal = 0;
+            
+            document.querySelectorAll('.cart-item').forEach(item => {
+                const price = parseFloat(item.querySelector('.item-price').textContent.replace('$', ''));
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
+                const total = price * quantity;
+                
+                item.querySelector('.item-total').textContent = '$' + total.toFixed(2);
+                subtotal += total;
+            });
+            
+            const shipping = 9.99;
+            const tax = subtotal * 0.08;
+            const total = subtotal + shipping + tax;
+            
+            document.querySelector('.summary-row:nth-child(1) .summary-value').textContent = '$' + subtotal.toFixed(2);
+            document.querySelector('.summary-row:nth-child(3) .summary-value').textContent = '$' + tax.toFixed(2);
+            document.querySelector('.summary-total .summary-value').textContent = '$' + total.toFixed(2);
+            
+            // Update item count in header
+            const itemCount = document.querySelectorAll('.cart-item').length;
+            document.querySelector('.cart-count-text').textContent = itemCount + (itemCount === 1 ? ' item' : ' items');
+        }
+        
+        // Update cart count in header
+        function updateCartCount() {
+            const itemCount = document.querySelectorAll('.cart-item').length;
+            document.querySelector('.cart-count').textContent = itemCount;
+        }
+        
+        // Show empty cart message
+        function showEmptyCart() {
+            const cartSection = document.querySelector('.cart-section');
+            cartSection.innerHTML = `
+                <div class="empty-cart">
+                    <div class="empty-cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h2 class="empty-cart-title">Your cart is empty</h2>
+                    <p class="empty-cart-text">Looks like you haven't added any items to your cart yet. Explore our collections to find something you'll love!</p>
+                    <a href="shop.html" class="shop-now-btn">Start Shopping</a>
+                </div>
+            `;
+        }
+        
+        // Promo code application
+        document.querySelector('.apply-btn').addEventListener('click', function() {
+            const promoInput = document.querySelector('.promo-input');
+            const promoCode = promoInput.value.trim().toUpperCase();
+            
+            if (promoCode === 'LANISDEB10') {
+                alert('Promo code applied! 10% discount has been added to your order.');
+                // Apply discount logic would go here
+                promoInput.value = '';
+            } else if (promoCode) {
+                alert('Invalid promo code. Please try again.');
+                promoInput.value = '';
+            } else {
+                alert('Please enter a promo code.');
+            }
+        });
+        
+        // Checkout button
+        document.querySelector('.checkout-btn').addEventListener('click', function() {
+            // In a real application, this would redirect to the checkout page
+            alert('Proceeding to checkout...');
+            // window.location.href = 'checkout.html';
+        });
+        
+        // Initialize cart totals
+        updateCartTotals();
+    </script>
+</body>
+</html>
